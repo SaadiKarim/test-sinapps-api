@@ -3,7 +3,7 @@ import { ParkingModule } from './parking/parking.module';
 import * as helmet from 'helmet';
 
 async function bootstrap() {
-  const app = await NestFactory.create(ParkingModule);
+  const app = await NestFactory.create(ParkingModule, { cors: true });
   app.use(helmet());
   await app.listen(3000);
 }
