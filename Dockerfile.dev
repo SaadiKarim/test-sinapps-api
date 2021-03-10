@@ -1,0 +1,7 @@
+FROM node:lts-stretch
+
+RUN apt-get update -y
+RUN apt-get install git -y
+RUN npm i -g nodemon @nestjs/cli
+
+EXPOSE 3000
