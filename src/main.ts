@@ -5,6 +5,7 @@ import * as csurf from 'csurf';
 import * as session from 'express-session';
 import * as compression from 'compression';
 import { ConfigService } from '@nestjs/config';
+import { ValidationPipe } from '@nestjs/common';
 
 
 async function bootstrap() {
@@ -20,6 +21,7 @@ async function bootstrap() {
   }));
   app.use(csurf());
   app.use(compression());
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(configService.get('PORT') || 3000);
 }
