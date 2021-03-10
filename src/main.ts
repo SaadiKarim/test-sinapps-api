@@ -3,6 +3,7 @@ import { ParkingModule } from './parking/parking.module';
 import * as helmet from 'helmet';
 import * as csurf from 'csurf';
 import * as session from 'express-session';
+import * as compression from 'compression';
 
 async function bootstrap() {
   const app = await NestFactory.create(ParkingModule, { cors: true });
@@ -14,6 +15,8 @@ async function bootstrap() {
     cookie: { secure: true }
   }));
   app.use(csurf());
+  app.use(compression());
+
   await app.listen(3000);
 }
 bootstrap();
