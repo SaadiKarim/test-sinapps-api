@@ -1,4 +1,12 @@
 import { Module } from '@nestjs/common';
+import { ThrottlerModule } from '@nestjs/throttler';
 
-@Module({})
-export class ParkingModule {}
+@Module({
+    imports: [
+        ThrottlerModule.forRoot({
+            ttl: 60,
+            limit: 10,
+        })
+    ]
+})
+export class ParkingModule { }
