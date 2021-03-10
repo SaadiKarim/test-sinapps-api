@@ -4,9 +4,13 @@ import * as helmet from 'helmet';
 import * as csurf from 'csurf';
 import * as session from 'express-session';
 import * as compression from 'compression';
+import { ConfigService } from '@nestjs/config';
+
 
 async function bootstrap() {
   const app = await NestFactory.create(ParkingModule, { cors: true });
+  const configService = app.get(ConfigService);
+
   app.use(helmet());
   app.use(session({
     secret: 'keyboard cat',
@@ -17,6 +21,6 @@ async function bootstrap() {
   app.use(csurf());
   app.use(compression());
 
-  await app.listen(3000);
+  await app.listen(configService.get('PORT') || 3000);
 }
 bootstrap();
