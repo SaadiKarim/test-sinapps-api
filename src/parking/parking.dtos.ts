@@ -1,8 +1,17 @@
-import { IsNotEmpty } from 'class-validator';
+import { Transform } from 'class-transformer';
+import { IsArray, IsNotEmpty } from 'class-validator';
 
 export class GetParkingsDto {
-  @IsNotEmpty()
-  test: string;
+  @Transform(({ value }) => value.split(','))
+  point1: string[];
+  @Transform(({ value }) => value.split(','))
+  point2: string[];
+  @Transform(({ value }) => value.split(','))
+  point3: string[];
+  @Transform(({ value }) => value.split(','))
+  point4: string[];
+  @Transform(({ value }) => value.split(','))
+  point5: string[];
 }
 
 export class ResParkingsDto {
@@ -15,5 +24,7 @@ export class GetParkingsWFS {
 }
 
 export class ResParkingsWFS {
-  
+
 }
+
+export class CreateParkingDto { }
