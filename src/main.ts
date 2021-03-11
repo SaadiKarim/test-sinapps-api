@@ -1,15 +1,15 @@
 import { NestFactory } from '@nestjs/core';
-import { ParkingModule } from './parking/parking.module';
 import * as helmet from 'helmet';
 import * as csurf from 'csurf';
 import * as session from 'express-session';
 import * as compression from 'compression';
 import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
+import { AppModule } from './app.module';
 
 
 async function bootstrap() {
-  const app = await NestFactory.create(ParkingModule, { cors: true });
+  const app = await NestFactory.create(AppModule, { cors: true });
   const configService = app.get(ConfigService);
 
   app.use(helmet());
@@ -19,7 +19,7 @@ async function bootstrap() {
     saveUninitialized: true,
     cookie: { secure: true }
   }));
-  app.use(csurf());
+  // app.use(csurf());
   app.use(compression());
   app.useGlobalPipes(new ValidationPipe());
 
