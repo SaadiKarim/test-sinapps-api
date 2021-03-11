@@ -1,0 +1,8 @@
+{
+    "version": "2.0.0",
+    "tasks": [{
+        "label": "debug",
+        "command": "npm run start:debug", 
+        "type": "shell"
+    }]
+}
