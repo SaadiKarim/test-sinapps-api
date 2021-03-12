@@ -1,4 +1,3 @@
-import { CreateUserDTO } from "@users/user.dtos";
 import { UserCan } from "@users/user.interfaces";
 
 export class User {
@@ -8,7 +7,7 @@ export class User {
     password: string;
     can: UserCan;
 
-    constructor(data: CreateUserDTO) {
+    constructor(data: any) {
         this.id = data.id;
         this.name = data.name;
         this.email = data.email;

@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import * as helmet from 'helmet';
-import * as csurf from 'csurf';
 import * as session from 'express-session';
 import * as compression from 'compression';
 import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 
 async function bootstrap() {
@@ -19,7 +19,14 @@ async function bootstrap() {
     saveUninitialized: true,
     cookie: { secure: true }
   }));
-  // app.use(csurf());
+  const config = new DocumentBuilder()
+    .setTitle('Parking API')
+    .setDescription('Sinapps parking API')
+    .setVersion('1.0')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
   app.use(compression());
   app.useGlobalPipes(new ValidationPipe());
 

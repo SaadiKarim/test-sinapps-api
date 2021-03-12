@@ -2,7 +2,6 @@ import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ThrottlerModule } from '@nestjs/throttler';
-import { CaslModule } from '@casl/casl.module';
 import { ParkingModule } from '@parking/parking.module';
 import { AuthModule } from '@auth/auth.module';
 
@@ -18,10 +17,8 @@ import { AuthModule } from '@auth/auth.module';
         }),
         ConfigModule.forRoot({
             isGlobal: true,
-            envFilePath: 'config/development.env',
-            cache: true
+            envFilePath: 'src/config/development.env'
         }),
-        CaslModule,
         ParkingModule,
         AuthModule
     ],

@@ -8,8 +8,8 @@ export class UsersService {
         new User({
             id: '1',
             name: 'Karim SAADI',
-            email: 'ksaadi@hello.fr',
-            password: '',
+            email: 'karimsaadi.dev@gmail.com',
+            password: '12',
             can: {
                 create: false,
                 delete: false,
@@ -22,7 +22,7 @@ export class UsersService {
             id: '2',
             name: 'Hand Graradji',
             email: 'hgraradji@hello.fr',
-            password: '',
+            password: '34',
             can: {
                 create: true,
                 delete: true,
@@ -33,7 +33,7 @@ export class UsersService {
         }),
     ]
 
-    async findOne(email: string): Promise<User | undefined> {
+    async findOne(email: string): Promise<User> {
         return this.users.find(user => user.email === email);
     }
 }

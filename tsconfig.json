@@ -12,8 +12,11 @@
     "baseUrl": "./",
     "incremental": true,
     "paths": {
-      "@config/*" : ["config/*"],
-      "@parking/*" : ["src/parking/*"]
+      "@config/*" : ["src/config/*"],
+      "@parking/*" : ["src/parking/*"],
+      "@casl/*" : ["src/casl/*"],
+      "@auth/*" : ["src/auth/*"],
+      "@users/*" : ["src/users/*"],
     }
   }
 }
